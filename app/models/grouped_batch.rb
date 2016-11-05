@@ -1,0 +1,2 @@
+class GroupedBatch < ApplicationRecord
+end

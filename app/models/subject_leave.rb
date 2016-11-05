@@ -1,0 +1,2 @@
+class SubjectLeave < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class DescriptiveIndicator < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class FaGroup < ApplicationRecord
+end

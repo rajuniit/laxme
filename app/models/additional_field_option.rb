@@ -1,0 +1,2 @@
+class AdditionalFieldOption < ApplicationRecord
+end

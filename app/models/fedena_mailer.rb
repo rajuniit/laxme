@@ -1,0 +1,2 @@
+class FedenaMailer < ApplicationRecord
+end

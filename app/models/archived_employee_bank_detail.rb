@@ -1,0 +1,2 @@
+class ArchivedEmployeeBankDetail < ApplicationRecord
+end

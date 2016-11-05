@@ -1,0 +1,2 @@
+class ArchivedStudent < ApplicationRecord
+end

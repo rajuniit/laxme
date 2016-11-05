@@ -1,0 +1,2 @@
+class StudentPreviousDatas < ApplicationRecord
+end

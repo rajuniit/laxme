@@ -1,0 +1,2 @@
+class BatchStudent < ApplicationRecord
+end

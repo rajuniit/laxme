@@ -1,0 +1,2 @@
+class ArchivedGuardian < ApplicationRecord
+end

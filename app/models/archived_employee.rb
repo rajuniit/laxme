@@ -1,0 +1,2 @@
+class ArchivedEmployee < ApplicationRecord
+end

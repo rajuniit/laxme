@@ -1,0 +1,2 @@
+class StudentAdditionalFieldOption < ApplicationRecord
+end

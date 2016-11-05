@@ -1,0 +1,2 @@
+class CceGradeSet < ApplicationRecord
+end

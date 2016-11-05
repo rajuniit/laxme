@@ -1,0 +1,2 @@
+class StudentCategory < ApplicationRecord
+end

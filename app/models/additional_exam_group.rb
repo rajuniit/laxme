@@ -1,0 +1,2 @@
+class AdditionalExamGroup < ApplicationRecord
+end

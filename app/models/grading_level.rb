@@ -1,0 +1,2 @@
+class GradingLevel < ApplicationRecord
+end

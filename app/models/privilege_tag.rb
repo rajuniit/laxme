@@ -1,0 +1,2 @@
+class PrivilegeTag < ApplicationRecord
+end

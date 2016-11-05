@@ -1,0 +1,2 @@
+class FaCriteria < ApplicationRecord
+end

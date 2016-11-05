@@ -1,0 +1,2 @@
+class CceGrade < ApplicationRecord
+end

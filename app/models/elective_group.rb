@@ -1,0 +1,2 @@
+class ElectiveGroup < ApplicationRecord
+end

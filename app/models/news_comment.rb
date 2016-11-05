@@ -1,0 +1,2 @@
+class NewsComment < ApplicationRecord
+end

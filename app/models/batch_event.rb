@@ -1,0 +1,2 @@
+class BatchEvent < ApplicationRecord
+end

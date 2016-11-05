@@ -1,0 +1,2 @@
+class CceExamCategory < ApplicationRecord
+end

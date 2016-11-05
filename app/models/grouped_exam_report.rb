@@ -1,0 +1,2 @@
+class GroupedExamReport < ApplicationRecord
+end

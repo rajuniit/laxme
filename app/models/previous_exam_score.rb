@@ -1,0 +1,2 @@
+class PreviousExamScore < ApplicationRecord
+end

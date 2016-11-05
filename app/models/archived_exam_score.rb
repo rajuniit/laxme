@@ -1,0 +1,2 @@
+class ArchivedExamScore < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class PeriodEntry < ApplicationRecord
+end

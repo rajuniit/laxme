@@ -1,0 +1,2 @@
+class ArchivedEmployeeSalaryStructure < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class RankingLevel < ApplicationRecord
+end

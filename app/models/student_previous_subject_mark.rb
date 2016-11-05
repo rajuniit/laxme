@@ -1,0 +1,2 @@
+class StudentPreviousSubjectMark < ApplicationRecord
+end
