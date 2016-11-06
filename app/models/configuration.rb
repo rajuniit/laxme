@@ -5,7 +5,7 @@ class Configuration < ApplicationRecord
   NETWORK_STATES                   = [["#{I18n.t('online')}",'Online'],["#{I18n.t('offline')}",'Offline']]
   LOCALES = []
   Dir.glob(Rails.root.join("config/locales/*.yml")).each do |file|
-    file.gsub!(Rails.root.join("config/locales/"), '')
+    file.gsub!(Rails.root.join("config/locales/").to_s, '')
     file.gsub!(".yml", '')
     LOCALES << file
   end
