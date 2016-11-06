@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :username #, :email
   validates_length_of     :username, :within => 1..20
   validates_length_of     :password, :within => 4..40, :allow_nil => true
-  validates_format_of     :username, :with => /^[A-Z0-9_-]*$/i,
+  validates_format_of     :username, :with => /\A[A-Z0-9_-]*\z/i,
                           :message => "#{I18n.t('must_contain_only_letters')}"
   validates_format_of     :email, :with => /\A[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}\z/i,   :allow_blank=>true,
                           :message => "#{I18n.t('must_be_a_valid_email_address')}"
