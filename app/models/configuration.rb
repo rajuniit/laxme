@@ -4,8 +4,8 @@ class Configuration < ApplicationRecord
 
   NETWORK_STATES                   = [["#{I18n.t('online')}",'Online'],["#{I18n.t('offline')}",'Offline']]
   LOCALES = []
-  Dir.glob("#{RAILS_ROOT}/config/locales/*.yml").each do |file|
-    file.gsub!("#{RAILS_ROOT}/config/locales/", '')
+  Dir.glob(Rails.root.join("config/locales/*.yml")).each do |file|
+    file.gsub!(Rails.root.join("config/locales/"), '')
     file.gsub!(".yml", '')
     LOCALES << file
   end
@@ -31,7 +31,7 @@ class Configuration < ApplicationRecord
     end
 
     def save_institution_logo(upload)
-      directory, filename = "#{RAILS_ROOT}/public/uploads/image", 'institute_logo.jpg'
+      directory, filename = Rails.root.join("public/uploads/image"), 'institute_logo.jpg'
       path = File.join(directory, filename) # create the file path
       File.open(path, "wb") { |f| f.write(upload['datafile'].read) } # write the file
     end
