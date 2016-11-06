@@ -1,0 +1,17 @@
+sms_settings:
+ username: "AC338c214b52d222b6220819010acaabcd"
+ password: "3a2ca889a3195b2083a045ccb35b8d40"
+ sendername: "+1 844-286-3574"
+ host_url: "https://api.twilio.com/2010-04-01/Accounts/AC338c214b52d222b6220819010acaabcd/Messages.json"
+ success_code: "success"
+
+parameter_mappings:
+ username: username
+ password: password
+ sendername: From
+ message: Body
+ phone: To
+
+# Additional parameters to be added should given in the format "param1=value1&param2=value2&..."
+additional_parameters: ""
+ 

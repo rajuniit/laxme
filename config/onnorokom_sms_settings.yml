@@ -1,0 +1,17 @@
+sms_settings:
+ username: "01811393240"
+ password: "10abe9"
+ sendername: "+1 844-286-3574"
+ host_url: "http://api2.onnorokomsms.com/sendsms.asmx?wsdl"
+ success_code: "success"
+
+parameter_mappings:
+ username: username
+ password: password
+ sendername: From
+ message: Body
+ phone: To
+
+# Additional parameters to be added should given in the format "param1=value1&param2=value2&..."
+additional_parameters: ""
+ 

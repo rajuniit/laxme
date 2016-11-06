@@ -50,3 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'i18n'
 gem "paperclip", "~> 5.0.0.beta1"
 gem 'deferred_associations'
+gem 'sidekiq'
+gem 'savon', '~> 2.11.0'
