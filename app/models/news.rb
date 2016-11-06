@@ -9,6 +9,5 @@ class News < ApplicationRecord
   default_scope { where(:order => 'created_at DESC') }
 
   cattr_reader :per_page
-  xss_terminate :except => [:content]
   @@per_page = 12
 end
