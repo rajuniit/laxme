@@ -2,7 +2,6 @@
 # Configure your SMS API settings
 require 'net/http'
 require 'yaml'
-require 'translator'
 
 class AttendanceManager
   attr_accessor :attendance_file,
