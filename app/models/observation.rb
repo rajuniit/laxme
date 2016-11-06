@@ -6,5 +6,5 @@ class Observation < ApplicationRecord
   has_many    :cce_reports, :as=>:observable
 
   default_scope :order=>'sort_order ASC'
-  named_scope :active,:conditions=>{:is_active=>true}
+  scope :active, -> { where(:is_active=>true) }
 end

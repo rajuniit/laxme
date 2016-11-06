@@ -4,5 +4,5 @@ class Hr::EmployeeDepartment < ApplicationRecord
   has_many :employees
   has_many  :employee_department_events
   has_many  :events,  :through=>:employee_department_events
-  named_scope :active, :conditions => {:status => true }
+  scope :active, -> { where(:status => true) }
 end

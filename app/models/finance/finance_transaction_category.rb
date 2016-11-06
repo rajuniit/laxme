@@ -6,5 +6,5 @@ class Finance::FinanceTransactionCategory < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of  :name, :case_sensitive => false
 
-  named_scope :expense_categories, :conditions => "is_income = false AND name NOT LIKE 'Salary'and deleted = 0"
+  scope :expense_categories, -> { where("is_income = false AND name NOT LIKE 'Salary'and deleted = 0") }
 end

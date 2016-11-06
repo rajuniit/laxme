@@ -27,19 +27,21 @@ class Student < ApplicationRecord
   has_many   :previous_exam_scores
 
 
-  named_scope :active, :conditions => { :is_active => true }
-  named_scope :with_full_name_only, :select=>"id, CONCAT_WS('',first_name,' ',last_name) AS name,first_name,last_name", :order=>:first_name
-  named_scope :with_name_admission_no_only, :select=>"id, CONCAT_WS('',first_name,' ',last_name,' - ',admission_no) AS name,first_name,last_name,admission_no", :order=>:first_name
+  scope :active, -> { where(:is_active => true) }
+  scope :with_full_name_only, -> {
+    select("id, CONCAT_WS('',first_name,' ',last_name) AS name,first_name,last_name").order(:first_name) }
+  scope :with_name_admission_no_only, -> {
+    select("id, CONCAT_WS('',first_name,' ',last_name,' - ',admission_no) AS name,first_name,last_name,admission_no").order(:first_name) }
 
-  named_scope :by_first_name, :order=>'first_name',:conditions => { :is_active => true }
+  scope :by_first_name, -> { where(:is_active => true).order('first_name') }
 
   validates_presence_of :admission_no, :admission_date, :first_name, :batch_id, :date_of_birth
   validates_uniqueness_of :admission_no
   validates_presence_of :gender
-  validates_format_of     :email, :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,   :allow_blank=>true,
-                          :message => "#{t('must_be_a_valid_email_address')}"
-  validates_format_of     :admission_no, :with => /^[A-Z0-9_-]*$/i,
-                          :message => "#{t('must_contain_only_letters')}"
+  validates_format_of     :email, :with => /\A[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}\z/i,   :allow_blank=>true,
+                          :message => "#{I18n.t('must_be_a_valid_email_address')}"
+  validates_format_of     :admission_no, :with => /\A[A-Z0-9_-]*\z/i,
+                          :message => "#{I18n.t('must_contain_only_letters')}"
 
   validates_associated :user
   before_validation :create_user_and_validate

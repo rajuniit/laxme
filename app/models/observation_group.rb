@@ -4,7 +4,7 @@ class ObservationGroup < ApplicationRecord
   belongs_to                :cce_grade_set
   has_and_belongs_to_many   :courses
 
-  named_scope :active,:conditions=>{:is_deleted=>false}
+  scope :active, -> { where(:is_deleted=>false) }
 
   OBSERVATION_KINDS={'0'=>'Scholastic','1'=>'Co Scholastic Activity','3'=>'Co Scholastic Area'}
 

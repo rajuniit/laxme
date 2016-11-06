@@ -2,13 +2,13 @@ class Exam < ApplicationRecord
 
   validates_presence_of :start_time, :end_time
   validates_numericality_of :maximum_marks, :minimum_marks, :allow_nil => true
-  validates_presence_of :maximum_marks, :minimum_marks, :if => :validation_should_present?, :on=>:update
+  validates_presence_of :maximum_marks, :minimum_marks, :if => :validation_should_present?, :on => :update
   belongs_to :exam_group
-  belongs_to :subject, :conditions => { :is_deleted => false }
+  belongs_to :subject, -> { where(:is_deleted => false) }
   before_destroy :removable?
   before_save :update_exam_group_date
 
-  has_one :event ,:as=>:origin
+  has_one :event, :as => :origin
 
   has_many :exam_scores
   has_many :archived_exam_scores
@@ -27,7 +27,7 @@ class Exam < ApplicationRecord
   end
 
   def removable?
-    self.exam_scores.reject{|es| es.marks.nil? and es.grading_level_id.nil?}.empty?
+    self.exam_scores.reject { |es| es.marks.nil? and es.grading_level_id.nil? }.empty?
 
   end
 
@@ -37,7 +37,7 @@ class Exam < ApplicationRecord
     errors.add_to_base("#{t('minmarks_cant_be_more_than_maxmarks')}") \
       if minimum_marks and maximum_marks and minimum_marks > maximum_marks
     unless self.start_time.nil? or self.end_time.nil?
-      errors.add_to_base("#{t('end_time_cannot_before_start_time')}")if self.end_time < self.start_time
+      errors.add_to_base("#{t('end_time_cannot_before_start_time')}") if self.end_time < self.start_time
     end
   end
 
@@ -55,20 +55,20 @@ class Exam < ApplicationRecord
   end
 
   def score_for(student_id)
-    exam_score = self.exam_scores.find(:first, :conditions => { :student_id => student_id })
+    exam_score = self.exam_scores.find(:first, :conditions => {:student_id => student_id})
     exam_score.nil? ? ExamScore.new : exam_score
   end
 
   def class_average_marks
     results = ExamScore.find_all_by_exam_id(self)
-    scores = results.collect { |x| x.marks unless x.marks.nil?}
+    scores = results.collect { |x| x.marks unless x.marks.nil? }
     scores.delete(nil)
     return (scores.sum / scores.size) unless scores.size == 0
     return 0
   end
 
   def fa_groups
-    subject.fa_groups.select{|fg| fg.cce_exam_category_id == exam_group.cce_exam_category_id}
+    subject.fa_groups.select { |fg| fg.cce_exam_category_id == exam_group.cce_exam_category_id }
   end
 
   private
@@ -80,19 +80,19 @@ class Exam < ApplicationRecord
   def create_exam_event
     if self.event.blank?
       new_event = Event.create do |e|
-        e.title       = "#{t('exam_text')}"
+        e.title = "#{t('exam_text')}"
         e.description = "#{self.exam_group.name} #{t('for')} #{self.subject.batch.full_name} - #{self.subject.name}"
-        e.start_date  = self.start_time
-        e.end_date    = self.end_time
-        e.is_exam     = true
-        e.origin      = self
+        e.start_date = self.start_time
+        e.end_date = self.end_time
+        e.is_exam = true
+        e.origin = self
       end
       batch_event = BatchEvent.create do |be|
         be.event_id = new_event.id
         be.batch_id = self.exam_group.batch_id
       end
       #self.event_id = new_event.id
-      self.update_attributes(:event_id=>new_event.id)
+      self.update_attributes(:event_id => new_event.id)
     end
   end
 

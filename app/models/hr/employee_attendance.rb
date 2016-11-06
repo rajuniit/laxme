@@ -4,4 +4,10 @@ class Hr::EmployeeAttendance < ApplicationRecord
   belongs_to :employee
   belongs_to :employee_leave_type
   before_save :validate
+
+  def validate
+    if self.attendance_date.to_date < self.employee.joining_date.to_date
+      errors.add(:employee_attendance,"#{t('date_marked_is_earlier_than_joining_date')}")
+    end
+  end
 end

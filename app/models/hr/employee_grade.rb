@@ -4,5 +4,5 @@ class Hr::EmployeeGrade < ApplicationRecord
   validates_numericality_of :priority
 
   has_many :employee
-  named_scope :active, :conditions => {:status => true }
+  scope :active, -> { where(:status => true) }
 end
