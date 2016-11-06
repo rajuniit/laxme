@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   validates_presence_of :title, :description, :start_date, :end_date
 
-  named_scope :holidays, :conditions => {:is_holiday => true}
-  named_scope :exams, :conditions => {:is_exam => true}
+  scope :holidays, -> { where(:is_holiday => true) }
+  scope :exams, -> { where(:is_exam => true) }
   has_many :batch_events, :dependent => :destroy
   has_many :employee_department_events, :dependent => :destroy
   has_many :user_events, :dependent => :destroy

@@ -6,7 +6,7 @@ class CceReport < ApplicationRecord
   belongs_to :observable, :polymorphic => true
   belongs_to :exam
 
-  named_scope :scholastic, -> { where(:observable_type => "FaCriteria") }
-  named_scope :coscholastic, -> { where(:observable_type => "Observation") }
+  scope :scholastic, -> { where(:observable_type => "FaCriteria") }
+  scope :coscholastic, -> { where(:observable_type => "Observation") }
 
 end

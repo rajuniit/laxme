@@ -1,3 +1,3 @@
 class Language < ApplicationRecord
-  named_scope :translation_available, :conditions => { :code => Configuration::LOCALES }
+  scope :translation_available, -> { where(:code => Configuration::LOCALES) }
 end
