@@ -61,12 +61,12 @@ class Student < ApplicationRecord
     :message=>'must be less than 500 KB.',:if=> Proc.new { |p| p.photo_file_name_changed? }
 
   def validate
-    errors.add(:date_of_birth, "#{t('cant_be_a_future_date')}.") if self.date_of_birth >= Date.today \
+    errors.add(:date_of_birth, "#{I18n.t('cant_be_a_future_date')}.") if self.date_of_birth >= Date.today \
       unless self.date_of_birth.nil?
-    errors.add(:gender, "#{t('model_errors.student.error2')}.") unless ['m', 'f'].include? self.gender.downcase \
+    errors.add(:gender, "#{I18n.t('model_errors.student.error2')}.") unless ['m', 'f'].include? self.gender.downcase \
       unless self.gender.nil?
-    errors.add(:admission_no, "#{t('model_errors.student.error3')}.") if self.admission_no=='0'
-    errors.add(:admission_no, "#{t('should_not_be_admin')}") if self.admission_no.to_s.downcase== 'admin'
+    errors.add(:admission_no, "#{I18n.t('model_errors.student.error3')}.") if self.admission_no=='0'
+    errors.add(:admission_no, "#{I18n.t('should_not_be_admin')}") if self.admission_no.to_s.downcase== 'admin'
 
   end
 

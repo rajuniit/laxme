@@ -10,7 +10,7 @@ class Event < ApplicationRecord
 
   def validate
     unless self.start_date.nil? or self.end_date.nil?
-      errors.add(:end_time, "#{t('can_not_be_before_the_start_time')}") if self.end_date < self.start_date
+      errors.add(:end_time, "#{I18n.t('can_not_be_before_the_start_time')}") if self.end_date < self.start_date
     end
   end
 

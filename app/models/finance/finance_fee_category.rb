@@ -11,6 +11,6 @@ class Finance::FinanceFeeCategory < ApplicationRecord
   @@per_page = 10
 
   validates_presence_of :name
-  validates_presence_of :batch_id,:message=>"#{t('not_specified')}"
+  validates_presence_of :batch_id,:message=>"#{I18n.t('not_specified')}"
   validates_uniqueness_of :name, :scope=>[:batch_id, :is_deleted],:if=> 'is_deleted == false'
 end
