@@ -6,7 +6,7 @@ class News < ApplicationRecord
 
   validates_presence_of :title, :content
 
-  default_scope :order => 'created_at DESC'
+  default_scope { where(:order => 'created_at DESC') }
 
   cattr_reader :per_page
   xss_terminate :except => [:content]

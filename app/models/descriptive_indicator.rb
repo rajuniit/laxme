@@ -4,5 +4,5 @@ class DescriptiveIndicator < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :desc
 
-  default_scope :order=>'sort_order ASC'
+  default_scope { where(:order=>'sort_order ASC') }
 end
